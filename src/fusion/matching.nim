@@ -1157,7 +1157,7 @@ macro dumpIdxTree(n: untyped) {.used.} =
 func parseMatchExpr*(n: NimNode): Match =
   ## Parse match expression from nim node
   case n.kind:
-    of nnkIdent, nnkSym, nnkIntKinds, nnkStrKinds, nnkFloatKinds:
+    of nnkIdent, nnkSym, nnkDotExpr, nnkIntKinds, nnkStrKinds, nnkFloatKinds:
       result = Match(kind: kItem, itemMatch: imkInfixEq, declNode: n)
       # Underscore placeholders are converted to always-true matches,
       # otherwise comparison is done using `==` operator. RHS node is
